@@ -22,13 +22,33 @@ public class MainActivity extends AppCompatActivity {
         shareBtn = findViewById(R.id.shareBtn);
         emailBtn = findViewById(R.id.emailBtn);
 
+
         dailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent dailIntent  = new Intent(Intent.ACTION_DIAL);
 //                dailIntent.setAction(Intent.ACTION_DIAL);
-                dailIntent.setData(Uri.parse("Gp: +00801790561194"));
+                dailIntent.setData(Uri.parse("tel: +00801790561194"));
                 startActivity(dailIntent);
+            }
+        });
+
+        messageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent messageIntent = new Intent(Intent.ACTION_SENDTO);
+                messageIntent.setData(Uri.parse("sms_to:"+Uri.encode("+00801790561194")));
+                messageIntent.putExtra("sms_body","Write Message Here");
+                startActivity(messageIntent);
+
+            }
+        });
+
+        emailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType()
             }
         });
 
